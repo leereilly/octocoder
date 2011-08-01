@@ -1,6 +1,7 @@
 source :rubygems
 
 gem 'sinatra'
+gem 'shotgun'
 gem 'json'
 
 group :test do

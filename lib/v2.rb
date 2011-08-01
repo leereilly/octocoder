@@ -1,5 +1,5 @@
-module Foobar
-  class Foo < Sinatra::Base
+module CCS
+  class V2 < Sinatra::Base
     
     #configure do
       # set app specific settings

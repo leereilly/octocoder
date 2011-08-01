@@ -1,7 +1,7 @@
 require File.dirname(__FILE__) + '/config/boot.rb'
 
 run Rack::URLMap.new({
-  "/"    => CCS::Version1,
-  "/version1" => CCS::Version1,
-  "/version2" => CCS::Version2
+  "/"    => CCS::V1,
+  "/version1" => CCS::V1,
+  "/version2" => CCS::V2
 })

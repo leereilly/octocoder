@@ -3,6 +3,7 @@ source :rubygems
 gem 'rest-client'
 gem 'sinatra'
 gem 'shotgun'
+gem 'heroku'
 gem 'json'
 
 group :test do

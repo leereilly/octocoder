@@ -84,7 +84,6 @@ Any changes to the actual API that aren't backwards-compatible should be added t
 * GitHub for being awesome __and__ having a public API
 * Coderwall
 * Gems sinatra, shotgun, heroku, rest-client, json, rspec, rack-test and webrat
-* The letter 'F'
 
 # Bugs / Known Issues
 

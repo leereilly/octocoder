@@ -12,7 +12,7 @@ In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/
 ## Other Examples
 
 * http://coderwall-contributor-service.heroku.com/v1/rails/rails/dhh
-* http://coderwall-contributor-service.heroku.com/v1/sinatra/sinatra/dhh
+* http://coderwall-contributor-service.heroku.com/v1/sinatra/sinatra/leereilly
 * http://coderwall-contributor-service.heroku.com/v1/mojombo/chronic/leereilly
 * http://coderwall-contributor-service.heroku.com/v1/imathis/octopress/imathis
 

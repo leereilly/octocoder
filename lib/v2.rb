@@ -7,7 +7,7 @@ module CCS
     #end
     
     get '/' do
-      "Hello from foo"
+      "Coming soon!"
     end
     
     # I did this to be able to wrap my app in Rack::Auth::Digest for example

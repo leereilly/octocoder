@@ -8,6 +8,13 @@ This is a simple, RESTful, rack-based web service for use by [Coderwall](http://
 In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly` and get the following JSON response indicating that `leereilly` has made 6 contributions to the repository called `rails` owner by user `rails`:
 
     {"count":6}
+    
+## Other Examples
+
+* http://coderwall-contributor-service.heroku.com/v1/rails/rails/dhh
+* http://coderwall-contributor-service.heroku.com/v1/sinatra/sinatra/dhh
+* http://coderwall-contributor-service.heroku.com/v1/mojombo/chronic/leereilly
+* http://coderwall-contributor-service.heroku.com/v1/imathis/octopress/imathis
 
 # Installation
 

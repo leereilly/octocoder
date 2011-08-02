@@ -1,13 +1,13 @@
 # About
 
-This is a simple, RESTful, rack/sinatra-based web service utility for use by [Coderwall](http://www.coderwall.com) to answer the question "__how many contributions has a particular user made to particular source code repository on GitHub?__". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.
+This is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com). It answers the question "__how many contributions has a particular user made to particular source code repository on GitHub?__". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.
 
 * Riding the Rails - user has contributed to the Rails framework.
 * In the Wee Small Hours - user has contributed to the Sinatra framework.
 
-In a nutshell, you'll quest `http://coderwall-contributor-service.heroku.com/rails/rails/leereilly` and get the following JSON response:
+In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly` and get the following JSON response:
 
-    {"count":0}
+    {"count":6}
 
 # Installation
 
@@ -48,14 +48,12 @@ There are 4 easy steps (if you've used Heroku before). Please refer to [Heroku D
 
 Call `http://coderwall-contributor-service.heroku.com/:owner/:repo/:user` e.g.
 
-   
+    curl http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly
+    {"count":6}
     
-
 ## Note About API Version
 
-If you want to always get the latest feed points to
-
-http://coderwall-contributor-service.heroku.com/rails/rails/leereilly
+If you want to always use the **latest** API version, point to `http://coderwall-contributor-service.heroku.com/:owner/:repo/:user`
 
 **NB:** This is usually considered bad practice i.e. if the API changes then your app might crash/burn/kill.
 
@@ -65,13 +63,13 @@ http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly
 
 Version 2 (v2) is coming soon...
 
-## Save teh kitties
+## PLZ
 
-Please don't point your uber-impressive production apps to the example heroku URL above. It's a free account with limited resources. Thank you!
+Please don't point your uber-impressive **production** apps to the example heroku URL above. It's a free account with limited resources. Thank you!
 
 # Contributing
 
-You know the drill. 
+Contributions are welcome and encouraged! You know the drill. 
 
 * Fork.
 * Commit code with tests.

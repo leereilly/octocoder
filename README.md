@@ -35,7 +35,14 @@ If everything looks OK, launch the application
 
     shotgun    
     
-## Installation on Heroku       
+## Installation on Heroku  
+
+There are 4 easy steps (if you've used Heroku before). Please refer to [Heroku Dev Center](http://devcenter.heroku.com/articles/quickstart) for help with Heroku.
+
+    git clone git@github.com:leereilly/coderwall-contributor-service.git
+    cd coderwall-contributor-service
+    heroku create 
+    git push heroku master
 
 # Usage
 

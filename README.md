@@ -1,13 +1,13 @@
 # About
 
-This is a simple, RESTful, rack/sinatra-based web service utility for use by [Coderwall](http://www.coderwall.com) to answer the question "how many commits has a particular user made to particular source code repository on GitHub". It'll be used to generate thousands of achievements for e.g.
+This is a simple, RESTful, rack/sinatra-based web service utility for use by [Coderwall](http://www.coderwall.com) to answer the question "__how many contributions has a particular user made to particular source code repository on GitHub?__". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.
 
-* Riding the Rails - contributed to the Rails framework.
-* In the Wee Small Hours - contributed to the Sinatra framework.
+* Riding the Rails - user has contributed to the Rails framework.
+* In the Wee Small Hours - user has contributed to the Sinatra framework.
 
-In a nutshell, you'll quest `http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly` and get the following JSON response:
+In a nutshell, you'll quest `http://coderwall-contributor-service.heroku.com/rails/rails/leereilly` and get the following JSON response:
 
-    "count" = 6
+    {"count":0}
 
 # Installation
 
@@ -46,7 +46,10 @@ There are 4 easy steps (if you've used Heroku before). Please refer to [Heroku D
 
 # Usage
 
-http://coderwall-contributor-service.heroku.com/:owner/:repo/:user
+Call `http://coderwall-contributor-service.heroku.com/:owner/:repo/:user` e.g.
+
+   
+    
 
 ## Note About API Version
 
@@ -78,9 +81,17 @@ You know the drill.
 
 Any changes to the actual API that aren't backwards-compatible should be added to a new version.
 
+# Kudos
+
+* GitHub for being awesome __and__ having a public API
+* Coderwall
+* Gems sinatra, shotgun, heroku, rest-client, json, rspec, rack-test and webrat
+* The letter 'F'
+
 # Bugs / Known Issues
 
-* GitHub API document doesn't list Contributor as an available resource; it may be modified/removed at any time.
-* Version 1 pings the GitHub API for every single user/repo; Version 2 will store a cached copy.
+* The current GitHub API (Version 3) document doesn't list Contributor as an available resource; it may be modified/removed at any time :-o
+* Version 1 of the coderwall-contributor-service pings the GitHub API for every single user/repo requested. Version 2 will store a cached copy on the filesystem (hard if I stick with Heroku) or in a database.
+* Timeouts/going over the GitHub API limit... version 2 :-)
 
 ![Bugs](http://i.imgur.com/K8vsw.gif "Bugs")

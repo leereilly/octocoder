@@ -1,11 +1,11 @@
 # About
 
-This is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com). It answers the question "__how many contributions has a particular user made to particular source code repository on GitHub?__". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.
+This is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com). It answers the question "_how many contributions has a particular user made to particular source code repository on GitHub?_". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.
 
-* Riding the Rails - user has contributed to the Rails framework.
-* In the Wee Small Hours - user has contributed to the Sinatra framework.
+* **Riding the Rails** - user has contributed to the Rails framework.
+* **In the Wee Small Hours** - user has contributed to the Sinatra framework.
 
-In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly` and get the following JSON response:
+In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly` and get the following JSON response indicating that `leereilly` has made 6 contributions to the repository called `rails` owner by user `rails`:
 
     {"count":6}
 

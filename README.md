@@ -1,4 +1,4 @@
-![Octocoder](http://i.imgur.com/tAWWM.png "Octocoder")
+![Octocoder](http://i.imgur.com/IEcUy.png "Octocoder")
 
 # About
 

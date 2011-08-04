@@ -1,3 +1,5 @@
+![Octocoder](http://i.imgur.com/tAWWM.png "Octocoder")
+
 # About
 
 This is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com). It answers the question "_how many contributions has a particular user made to particular source code repository on GitHub?_". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.

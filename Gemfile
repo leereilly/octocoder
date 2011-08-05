@@ -8,6 +8,7 @@ gem 'json'
 gem 'datamapper'
 gem 'dm-mysql-adapter'
 gem 'dm-sqlite-adapter'
+gem 'dm-postgres-adapter'
 
 group :test do
   gem 'rspec'

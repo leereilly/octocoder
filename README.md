@@ -23,6 +23,7 @@ In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/
 **Prerequisites:**
 
 * RVM
+* MongoDB (http://www.mongodb.org/display/DOCS/Quickstart)
 
 Clone the repository
 
@@ -90,7 +91,7 @@ Any changes to the actual API that aren't backwards-compatible should be added t
 
 * GitHub for being awesome __and__ having a public API
 * Coderwall
-* Gems sinatra, shotgun, heroku, rest-client, json, rspec, rack-test and webrat
+* Gems sinatra, mongo-mapper, shotgun, heroku, rest-client, json, rspec, rack-test and webrat
 
 # Bugs / Known Issues
 

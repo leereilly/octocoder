@@ -2,21 +2,23 @@
 
 # About
 
-This is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com). It answers the question "_how many contributions has a particular user made to particular source code repository on GitHub?_". It'll (hopefully) be used to generate thousands of achievements for Coderwall e.g.
+Octocoder is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com) to identify users' repository-based achievements.
 
 * **Riding the Rails** - user has contributed to the Rails framework.
 * **In the Wee Small Hours** - user has contributed to the Sinatra framework.
 
-In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly` and get the following JSON response indicating that `leereilly` has made 6 contributions to the repository called `rails` owner by user `rails`:
+# Usage
 
+In a nutshell, you'll query `http://octocoder.heroku.com/v2/rails/rails/leereilly` and get the following JSON response indicating that `leereilly` has made 6 contributions to the repository called `rails` owned by user `rails`:
+  
     {"count":6}
     
-## Other Examples
+# Examples
 
-* http://coderwall-contributor-service.heroku.com/v1/rails/rails/dhh
-* http://coderwall-contributor-service.heroku.com/v1/sinatra/sinatra/leereilly
-* http://coderwall-contributor-service.heroku.com/v1/mojombo/chronic/leereilly
-* http://coderwall-contributor-service.heroku.com/v1/imathis/octopress/imathis
+* http://octocoder.heroku.com/v2/rails/rails/dhh
+* http://octocoder.heroku.com/v2/sinatra/sinatra/leereilly
+* http://octocoder.heroku.com/v2/mojombo/chronic/leereilly
+* http://octocoder.heroku.com/v2/imathis/octopress/imathis
 
 # Installation
 
@@ -25,12 +27,12 @@ In a nutshell, you'll query `http://coderwall-contributor-service.heroku.com/v1/
 **Prerequisites:**
 
 * RVM
-* MongoDB (http://www.mongodb.org/display/DOCS/Quickstart)
+* Bundler
 
 Clone the repository
 
-    git clone git@github.com:leereilly/coderwall-contributor-service.git
-    cd coderwall-contributor-service
+    git clone git@github.com:leereilly/octocoder.git
+    cd octocoder
     
 Install bundler and the required gems
 
@@ -53,33 +55,18 @@ If everything looks OK, launch the application
 
 There are 4 easy steps (if you've used Heroku before). Please refer to [Heroku Dev Center](http://devcenter.heroku.com/articles/quickstart) for help with Heroku.
 
-    git clone git@github.com:leereilly/coderwall-contributor-service.git
-    cd coderwall-contributor-service
+    git clone git@github.com:leereilly/octocoder.git
+    cd octocoder
     heroku create 
     git push heroku master
 
-# Usage
+# Note About API Version
 
-Call `http://coderwall-contributor-service.heroku.com/:owner/:repo/:user` e.g.
-
-    curl http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly
-    {"count":6}
-    
-## Note About API Version
-
-If you want to always use the **latest** API version, point to `http://coderwall-contributor-service.heroku.com/:owner/:repo/:user`
+If you want to always use the **latest** API version, point to `http://octocoder.heroku.com/:owner/:repo/:user`
 
 **NB:** This is usually considered bad practice i.e. if the API changes then your app might crash/burn/kill.
 
-If you want to always hit version 1 of the API (current stable version) hit
-
-http://coderwall-contributor-service.heroku.com/v1/rails/rails/leereilly
-
-Version 2 (v2) is coming soon...
-
-## PLZ
-
-Please don't point your uber-impressive **production** apps to the example heroku URL above. It's a free account with limited resources. Thank you!
+If you want to always hit version 1 of the API (current stable version) hit `http://octocoder.heroku.com/v1/rails/rails/leereilly`
 
 # Contributing
 
@@ -101,8 +88,9 @@ Any changes to the actual API that aren't backwards-compatible should be added t
 
 # Bugs / Known Issues
 
+* This is hosted on a free Heroku account with only one dyno i.e. performance and availability not guaranteed.
 * The current GitHub API (Version 3) document doesn't list Contributor as an available resource; it may be modified/removed at any time :-o
-* Version 1 of the coderwall-contributor-service pings the GitHub API for every single user/repo requested. Version 2 will store a cached copy on the filesystem (hard if I stick with Heroku) or in a database.
-* Timeouts/going over the GitHub API limit... version 2 :-)
+* More in the issues ^
+* The first time a repository is hit, all the contributors are cached. Subsequent calls will be faster.
 
 ![Bugs](http://i.imgur.com/K8vsw.gif "Bugs")

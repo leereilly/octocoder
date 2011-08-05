@@ -1,25 +1,3 @@
-#DataMapper.setup(:default, "mysql://octocoder:octocoder@octocoder.leereilly.net/octocoder")
-
-# DataMapper.setup(:default, {
-#    :adapter  => 'mysql',
-#    :database => "reillylife",
-#    :username => 'reillylife',
-#    :password => "reillylife",
-#    :host     => 'mysql.reillylife.com'
-#  })
- 
- # DataMapper.setup(:default, {
- #    :adapter  => 'mysql',
- #    :database => "octocoder",
- #    :username => 'octocoder',
- #    :password => 'octocoder',
- #    :host     => 'octocoder.leereilly.net'
- #  })
- 
-#DataMapper.setup(:default, 'sqlite::memory:')
-
-#DataMapper.auto_migrate!
-
 class Repository
   CACHE_EXPIRATION_TIME = 86400 # secs.
   

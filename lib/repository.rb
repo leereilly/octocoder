@@ -1,5 +1,5 @@
 class Repository
-  CACHE_EXPIRATION_TIME = 1 # secs.
+  CACHE_EXPIRATION_TIME = 86400 # secs.
   
   include DataMapper::Resource
   

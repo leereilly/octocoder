@@ -19,6 +19,18 @@ module CCS
       message.to_json
     end
     
+    get '/:owner/:repo/?' do
+      cached_repository = Repository.first(:owner => params[:owner], :name => params[:repo])
+      
+      if cached_repository
+        if cached_repository.stale?
+          cached_repository = cache_repository(:owner => params[:owner], :name => params[:name])
+      else
+        cached_repository = cache_repository(:owner => params[:owner], :name => params[:name])
+      end
+      return cached_repository
+    end
+    
     get '/:owner/:repo/:user/?' do
       content_type :json
       
@@ -44,7 +56,7 @@ module CCS
           contributions = create_and_replace_records( params[:owner], params[:repo], params[:user])
         end
       rescue => e
-        puts e.inspect
+        e.to_json
       end
       contributions.to_json
     end
@@ -53,9 +65,11 @@ module CCS
     def create_and_replace_records(owner, repo, login)
       contributions = Hash.new
       contributions[:count] = 0
+      
       cached_repository = Repository.create(:owner => owner, :name => repo)
       contributors_text = RestClient.get "https://api.github.com/repos/#{owner}/#{repo}/contributors"
       contributors = JSON.parse(contributors_text)
+      
       contributors.each do |contributor|
         cached_contributor = Contributor.first_or_create(:login => contributor['login'])
         cached_contributions = Contribution.create(:contributor => cached_contributor, :repository => cached_repository, :count => contributor['contributions'])

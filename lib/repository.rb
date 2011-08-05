@@ -1,5 +1,5 @@
 class Repository
-  CACHE_EXPIRATION_TIME = 86400 # secs.
+  CACHE_EXPIRATION_TIME = 1 # secs.
   
   include DataMapper::Resource
   
@@ -10,14 +10,64 @@ class Repository
   property :updated_at, DateTime
   
   has n, :contributions
-  has n, :contributors, :through => :contributions
-  
+
   def stale?
-    cache_expires_at = self.created_at.to_time.to_f + Repository::CACHE_EXPIRATION_TIME
-    if self.created_at.to_time.to_f >= cache_expires_at
+    time_now = Time.now.to_f
+    cache_expires_at = time_now + Repository::CACHE_EXPIRATION_TIME
+    
+    if cache_expires_at > time_now
       return true
     else
       return false
     end
+  end
+
+  def refresh
+    delete_cache
+    create_cache
+  end
+
+  def delete_cache
+    adapter = DataMapper.repository(:default).adapter
+    adapter.execute("DELETE FROM contributions WHERE repository_id = #{self.id}")
+    adapter.execute("DELETE FROM repositories WHERE id = #{self.id}")
+  end
+
+  def create_cache
+    cache_contributors_from_github(self.id)
+  end
+  
+  def cache_contributors_from_github(repository_id)
+    contributors_text = RestClient.get "https://api.github.com/repos/#{self.owner}/#{self.name}/contributors"
+    contributors_json = JSON.parse(contributors_text)
+    
+    contributors_json.each do |contributor|
+      contribution = Contribution.create(:repository => Repository.get(repository_id), :user => contributor['login'], :count => contributor['contributions'])
+    end
+  end
+  
+  def self.get_contributions(owner, repo, user)
+    contributions = 0
+    repository = Repository.first(:owner => owner, :name => repo)
+    
+    if repository
+
+      if repository.stale?
+        repository.delete_cache
+        repository = Repository.create(:owner => owner, :name => repo)
+        repository.create_cache
+        contributions = Contribution.first(:repository => repository, :user => user)['count']
+      else
+        contributions = Contribution.first(:user => user, :repository => repository)
+        contributions = contributions['count']
+      end
+      
+    else
+      repository = Repository.create(:owner => owner, :name => repo)
+      repository.create_cache
+      contributions = Contribution.first(:repository => repository, :user => user)['count']
+    end
+    
+    return contributions
   end
 end

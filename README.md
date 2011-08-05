@@ -37,6 +37,10 @@ Install bundler and the required gems
     gem install bundler     
     bundle install
     
+Set your database environment variable
+
+    mysql://octocoder:super-duper-password@mysql.github.com/octocoder
+    
 Run the tests
 
     rake spec

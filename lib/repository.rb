@@ -1,6 +1,4 @@
-class Repository
-  CACHE_EXPIRATION_TIME = 86400 # secs.
-  
+class Repository  
   include DataMapper::Resource
   
   property :id, Serial
@@ -12,10 +10,10 @@ class Repository
   has n, :contributions
 
   def stale?
-    time_now = Time.now.to_f
-    cache_expires_at = time_now + Repository::CACHE_EXPIRATION_TIME
-    
-    if cache_expires_at > time_now
+    time_now = DateTime.now
+    cache_expires_at = self.updated_at + 1
+
+    if time_now >= cache_expires_at
       return true
     else
       return false

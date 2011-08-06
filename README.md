@@ -2,7 +2,7 @@
 
 # About
 
-Octocoder is a simple, RESTful, rack-based web service for use by [Coderwall](http://www.coderwall.com) to identify users' repository-based achievements.
+Octocoder is a simple rack-based web service for use by [Coderwall](http://www.coderwall.com) to identify users' repository-based achievements.
 
 * **Riding the Rails** - user has contributed to the Rails framework.
 * **In the Wee Small Hours** - user has contributed to the Sinatra framework.

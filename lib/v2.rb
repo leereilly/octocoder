@@ -14,10 +14,7 @@ module CCS
     end
     
     get '/?' do
-      content_type :json
-      message = Hash.new
-      message[:message] = 'alive'
-      message.to_json
+     erb :index
     end
     
     get '/:owner/:repo/?' do

@@ -9,7 +9,7 @@ module CCS
       super
     end
     
-    get '/?' do
+    get '/' do
       content_type :json
       message = Hash.new
       message[:message] = 'alive'

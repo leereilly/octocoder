@@ -17,7 +17,7 @@ module CCS
      erb :index
     end
     
-    get 'count/:owner/:repo/:user/?' do
+    get '/:owner/:repo/:user/?' do
       content_type :json
       
       begin

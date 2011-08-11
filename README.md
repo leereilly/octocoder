@@ -15,10 +15,10 @@ In a nutshell, you'll query `http://octocoder.heroku.com/v2/rails/rails/leereill
     
 # Examples
 
-* http://octocoder.heroku.com/count/rails/rails/dhh
-* http://octocoder.heroku.com/count/sinatra/sinatra/leereilly
-* http://octocoder.heroku.com/count/mojombo/chronic/leereilly
-* http://octocoder.heroku.com/count/imathis/octopress/imathis
+* [http://octocoder.heroku.com/rails/rails/dhh](http://octocoder.heroku.com/rails/rails/dhh)
+* [http://octocoder.heroku.com/sinatra/sinatra/leereilly](http://octocoder.heroku.com/sinatra/sinatra/leereilly)
+* [http://octocoder.heroku.com/mojombo/chronic/leereilly](http://octocoder.heroku.com/mojombo/chronic/leereilly)
+* [http://octocoder.heroku.com/imathis/octopress/imathis](http://octocoder.heroku.com/imathis/octopress/imathis)
 
 # Installation
 

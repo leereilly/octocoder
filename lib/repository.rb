@@ -56,8 +56,10 @@ class Repository
         repository.create_cache
         contributions = Contribution.first(:repository => repository, :user => user)['count']
       else
-        contributions = Contribution.first(:user => user, :repository => repository)
-        contributions = contributions['count']
+        contribution = Contribution.first(:user => user, :repository => repository)
+        if contribution
+          contributions = contribution['count']
+        end
       end
       
     else
@@ -65,7 +67,7 @@ class Repository
       repository.create_cache
       contributions = Contribution.first(:repository => repository, :user => user)['count']
     end
-    
+
     return contributions
   end
 end

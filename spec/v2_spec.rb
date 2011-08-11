@@ -22,4 +22,12 @@ describe CCS::V2 do
       
     end
   end
+  
+  # Valid owner, valid repo, invalid user
+  describe "GET '/sinatra/sinatra/admin'" do  
+    it "should find the correct number of contributions" do
+      get '/sinatra/sinatra/admin/'
+      last_response.body.should == '{"count":0}'
+    end
+  end
 end

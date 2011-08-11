@@ -13,15 +13,11 @@ module CCS
       super
     end
     
-    get '/?' do
+    get '/' do
      erb :index
     end
     
-    get '/:owner/:repo/?' do
-
-    end
-    
-    get '/:owner/:repo/:user/?' do
+    get 'count/:owner/:repo/:user/?' do
       content_type :json
       
       begin

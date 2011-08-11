@@ -9,9 +9,7 @@ Octocoder is a simple rack-based web service for use by [Coderwall](http://www.c
 
 # Usage
 
-In a nutshell, you'll query `http://octocoder.heroku.com/v2/rails/rails/leereilly` and get the following JSON response indicating that `leereilly` has made 6 contributions to the repository called `rails` owned by user `rails`:
-  
-    {"count":6}
+In a nutshell, you'll query `http://octocoder.heroku.com/rails/rails/leereilly` and get the JSON response `{"count":6}`` indicating that `leereilly` has made `6`` contributions to the repository called `rails` owned by user `rails`.
     
 # Examples
 
@@ -41,7 +39,7 @@ Install bundler and the required gems
     
 Set your database environment variable
 
-    mysql://octocoder:super-duper-password@mysql.github.com/octocoder
+    export DATABASE_URL=mysql://octocoder:super-duper-password@mysql.github.com/octocoder
     
 Run the tests
 
@@ -66,7 +64,7 @@ If you want to always use the **latest** API version, point to `http://octocoder
 
 **NB:** This is usually considered bad practice i.e. if the API changes then your app might crash/burn/kill.
 
-If you want to always hit version 1 of the API (current stable version) hit `http://octocoder.heroku.com/v1/rails/rails/leereilly`
+If you want to always hit version 2 of the API (current stable version) hit `http://octocoder.heroku.com/v2/rails/rails/leereilly`
 
 # Contributing
 

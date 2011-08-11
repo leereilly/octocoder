@@ -9,7 +9,7 @@ describe CCS::V2 do
   # Valid owner, valid repo, valid user
   describe "GET '/sinatra/sinatra/leereilly'" do  
     it "should be successful" do
-      get '/sinatra/sinatra/leerilly/'
+      get '/sinatra/sinatra/leereilly/'
       last_response.should be_ok
     end
     
@@ -25,8 +25,13 @@ describe CCS::V2 do
   
   # Valid owner, valid repo, invalid user
   describe "GET '/sinatra/sinatra/admin'" do  
-    it "should find the correct number of contributions" do
+    it "should find the correct number of contributions for a cached repo" do
       get '/sinatra/sinatra/admin/'
+      last_response.body.should == '{"count":0}'
+    end
+    
+    it "should find the correct number of contributions for an uncached repo" do
+      get '/leereilly/leereilly.net/admin/'
       last_response.body.should == '{"count":0}'
     end
   end

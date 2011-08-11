@@ -44,7 +44,7 @@ class Repository
     end
   end
   
-  def self.get_contributions(owner, repo, user)
+  def self.get_contributions(owner, repo, user) # TODO: Screaming to be refactored #codeSmell
     contributions = 0
     repository = Repository.first(:owner => owner, :name => repo)
     
@@ -54,7 +54,10 @@ class Repository
         repository.delete_cache
         repository = Repository.create(:owner => owner, :name => repo)
         repository.create_cache
-        contributions = Contribution.first(:repository => repository, :user => user)['count']
+        contribution = Contribution.first(:repository => repository, :user => user)
+        if contribution
+          contributions = contribution['count']
+        end
       else
         contribution = Contribution.first(:user => user, :repository => repository)
         if contribution
@@ -65,7 +68,11 @@ class Repository
     else
       repository = Repository.create(:owner => owner, :name => repo)
       repository.create_cache
-      contributions = Contribution.first(:repository => repository, :user => user)['count']
+      contribution = Contribution.first(:repository => repository, :user => user)
+      
+      if contribution
+        contributions = contribution['count']
+      end
     end
 
     return contributions

@@ -16,7 +16,7 @@ module CCS
       message.to_json
     end
     
-    get '/:owner/:repo/:user/?' do
+    get 'count/:owner/:repo/:user/?' do
       content_type :json
       
       begin

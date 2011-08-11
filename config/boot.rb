@@ -7,3 +7,7 @@ Bundler.require(:default, ENV["RACK_ENV"].to_sym)
 
 Dir["./lib/**/*.rb"].each { |f| require f }
 
+DataMapper::Logger.new($stdout, :debug)
+DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
+DataMapper.auto_upgrade!
+

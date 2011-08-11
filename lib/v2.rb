@@ -2,10 +2,6 @@ require 'uri'
 require 'net/http'
 require 'net/https'
 
-DataMapper::Logger.new($stdout, :debug)
-DataMapper.setup(:default, ENV['DATABASE_URL'] || 'sqlite3://my.db')
-DataMapper.auto_upgrade!
-
 module CCS
   class V2< Sinatra::Base
     

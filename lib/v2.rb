@@ -21,11 +21,10 @@ module CCS
       
       begin
         contributions = Repository::get_contributions(params[:owner], params[:repo], params[:user])
+        response = {:count => contributions}
       rescue => e
-       contributions = {:message => e.message}
+       response = {:error => e.message.to_s}
       end
-      
-      response = {:count => contributions}
       response.to_json
     end  
   end

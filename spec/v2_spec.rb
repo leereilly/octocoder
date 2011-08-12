@@ -34,5 +34,10 @@ describe CCS::V2 do
       get '/leereilly/leereilly.net/admin/'
       last_response.body.should == '{"count":0}'
     end
+    
+    it "should return an error if the repo doesn't exist" do
+      get '/admin/schmadmin/schnarf-schnarf/'
+      last_response.body.should == '{"error":"404 Resource Not Found"}'
+    end
   end
 end

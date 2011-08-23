@@ -9,7 +9,7 @@ Octocoder is a simple rack-based web service for use by [Coderwall](http://www.c
 
 # Usage
 
-In a nutshell, you'll query `http://octocoder.heroku.com/rails/rails/leereilly` and get the JSON response `{"count":6}`` indicating that `leereilly` has made `6`` contributions to the repository called `rails` owned by user `rails`.
+In a nutshell, you'll query `http://octocoder.heroku.com/rails/rails/leereilly` and get the JSON response `{"count":6}`` indicating that `leereilly` has made `6` contributions to the repository called `rails` owned by user `rails`.
     
 # Examples
 

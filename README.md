@@ -18,6 +18,12 @@ In a nutshell, you'll query `http://octocoder.heroku.com/rails/rails/leereilly` 
 * [http://octocoder.heroku.com/mojombo/chronic/leereilly](http://octocoder.heroku.com/mojombo/chronic/leereilly)
 * [http://octocoder.heroku.com/imathis/octopress/imathis](http://octocoder.heroku.com/imathis/octopress/imathis)
 
+# See it in Action
+
+Check out http://www.coderwall.com/leereilly...
+
+![Coderwall](http://i.imgur.com/Dpgwm.png "Coderwall")
+
 # Installation
 
 ## Local installation

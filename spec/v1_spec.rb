@@ -1,13 +1,22 @@
 require 'spec_helper'
 
-# Kludge:
-#
-# I realize that testing against an actual live/production data source
-# is considered bad practice. I could use fakeweb, but I want to keep
-# it simple for now. Also, the number of contributons for a particular
-# repository isn't static like my test data set. I know, I know...
-
 describe CCS::V1 do
+  before do
+    Repository.all.destroy!
+    Contribution.all.destroy!
+
+    FakeWeb.register_uri(
+      :get,
+      "https://api.github.com/repos/rails/rails/contributors",
+      :body => '[{"login":"leereilly","contributions":6}]'
+    )
+    FakeWeb.register_uri(
+      :get,
+      %r|https://api\.github\.com/repos/.*leeeeeee.*/contributors|,
+      :body => '{"message":"Not Found"}',
+      :status => ["404", "Not Found"]
+    )
+  end
   
   def app
     @app ||= CCS::V1

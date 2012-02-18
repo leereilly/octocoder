@@ -11,3 +11,5 @@ RSpec.configure do |conf|
   conf.include Webrat::Matchers
   conf.before(:each) { FakeWeb.clean_registry }
 end
+
+FakeWeb.allow_net_connect = false

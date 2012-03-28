@@ -1,0 +1,167 @@
+<!doctype html>
+<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
+<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
+  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script type="text/javascript" src="javascripts/script.js"></script>
+
+  <title>Octocoder</title>
+  <meta name="description" content="A web service for coderwall to look up the number of contributions a user has made to a particular repository">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+</head>
+
+<body>
+
+  <div class="wrapper">
+    <header>
+      <h1 class="title">Octocoder</h1>
+    </header>
+    <div id="container">
+      <p class="tagline">A web service for coderwall to look up the number of contributions a user has made to a particular repository</p>
+      <div id="main" role="main">
+        <div class="download-bar">
+        <div class="inner">
+          <a href="https://github.com/leereilly/octocoder/tarball/master" class="download-button tar"><span>Download</span></a>
+          <a href="https://github.com/leereilly/octocoder/zipball/master" class="download-button zip"><span>Download</span></a>
+          <a href="https://github.com/leereilly/octocoder" class="code">fork Octocoder on GitHub</a>
+        </div>
+        <span class="blc"></span><span class="trc"></span>
+        </div>
+        <article class="markdown-body">
+          <p><img src="http://i.imgur.com/IEcUy.png" alt="Octocoder" title="Octocoder"></p>
+
+<h1>About</h1>
+
+<p>Octocoder is a simple rack-based web service for use by <a href="http://www.coderwall.com">Coderwall</a> to identify users' repository-based achievements. E.g.</p>
+
+<ul>
+<li>
+<strong>Riding the Rails</strong> - user has contributed to the Rails framework.</li>
+<li>
+<strong>In the Wee Small Hours</strong> - user has contributed to the Sinatra framework.</li>
+</ul><h1>Usage</h1>
+
+<p>In a nutshell, you'll query <code><a href="http://octocoder.heroku.com/rails/rails/leereilly">http://octocoder.heroku.com/rails/rails/leereilly</a></code> and get the JSON response <code>{"count":6}</code> indicating that <code>leereilly</code> has made <code>6</code> contributions to the repository called <code>rails</code> owned by user <code>rails</code>.</p>
+
+<h1>Examples</h1>
+
+<ul>
+<li><a href="http://octocoder.heroku.com/rails/rails/dhh">http://octocoder.heroku.com/rails/rails/dhh</a></li>
+<li><a href="http://octocoder.heroku.com/sinatra/sinatra/leereilly">http://octocoder.heroku.com/sinatra/sinatra/leereilly</a></li>
+<li><a href="http://octocoder.heroku.com/mojombo/chronic/leereilly">http://octocoder.heroku.com/mojombo/chronic/leereilly</a></li>
+<li><a href="http://octocoder.heroku.com/imathis/octopress/imathis">http://octocoder.heroku.com/imathis/octopress/imathis</a></li>
+</ul><h1>See it in Action</h1>
+
+<p>Check out <a href="http://www.coderwall.com/leereilly">http://www.coderwall.com/leereilly</a>...</p>
+
+<p><img src="http://i.imgur.com/Dpgwm.png" alt="Coderwall" title="Coderwall"></p>
+
+<h1>Installation</h1>
+
+<h2>Local installation</h2>
+
+<p><strong>Prerequisites:</strong></p>
+
+<ul>
+<li>RVM</li>
+<li>Bundler</li>
+</ul><p>Clone the repository</p>
+
+<pre><code>git clone git@github.com:leereilly/octocoder.git
+cd octocoder
+</code></pre>
+
+<p>Install bundler and the required gems</p>
+
+<pre><code>gem install bundler     
+bundle install
+</code></pre>
+
+<p>Set your database environment variable</p>
+
+<pre><code>export DATABASE_URL=mysql://octocoder:super-duper-password@mysql.github.com/octocoder
+</code></pre>
+
+<p>Run the tests</p>
+
+<pre><code>rake spec
+</code></pre>
+
+<p>If everything looks OK, launch the application</p>
+
+<pre><code>shotgun    
+</code></pre>
+
+<h2>Installation on Heroku</h2>
+
+<p>There are 4 easy steps (if you've used Heroku before). Please refer to <a href="http://devcenter.heroku.com/articles/quickstart">Heroku Dev Center</a> for help with Heroku.</p>
+
+<pre><code>git clone git@github.com:leereilly/octocoder.git
+cd octocoder
+heroku create 
+git push heroku master
+</code></pre>
+
+<h1>Note About API Version</h1>
+
+<p>If you want to always use the <strong>latest</strong> API version, point to <code><a href="http://octocoder.heroku.com/:owner/:repo/:user">http://octocoder.heroku.com/:owner/:repo/:user</a></code></p>
+
+<p><strong>NB:</strong> This is usually considered bad practice i.e. if the API changes then your app might crash/burn/kill.</p>
+
+<p>If you want to always hit version 2 of the API (current stable version) hit <code><a href="http://octocoder.heroku.com/v2/rails/rails/leereilly">http://octocoder.heroku.com/v2/rails/rails/leereilly</a></code></p>
+
+<h1>Contributing</h1>
+
+<p>Contributions are welcome and encouraged! You know the drill. </p>
+
+<ul>
+<li>Fork.</li>
+<li>Commit code with tests.</li>
+<li>Pull.</li>
+</ul><h2>General guidelines</h2>
+
+<p>Any changes to the actual API that aren't backwards-compatible should be added to a new version.</p>
+
+<h1>Kudos</h1>
+
+<ul>
+<li>GitHub for being awesome <strong>and</strong> having a public API</li>
+<li>Coderwall</li>
+<li>Gems sinatra, mongo-mapper, shotgun, heroku, rest-client, json, rspec, rack-test and webrat</li>
+</ul><h1>Bugs / Known Issues</h1>
+
+<ul>
+<li>This is hosted on a free Heroku account with only one dyno i.e. performance and availability not guaranteed.</li>
+<li>The current GitHub API (Version 3) document doesn't list Contributor as an available resource; it may be modified/removed at any time :-o</li>
+<li>More in the issues ^</li>
+<li>The first time a repository is hit, all the contributors are cached. Subsequent calls will be faster.</li>
+</ul><p><img src="http://i.imgur.com/K8vsw.gif" alt="Bugs" title="Bugs"></p>
+        </article>
+      </div>
+    </div>
+    <footer>
+      <div class="owner">
+      <p><a href="https://github.com/leereilly" class="avatar"><img src="https://secure.gravatar.com/avatar/8058c2c00149cbe4104ddc9fa814443f?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="48" height="48"/></a> <a href="https://github.com/leereilly">leereilly</a> maintains <a href="https://github.com/leereilly/octocoder">Octocoder</a></p>
+      </div>
+      <div class="creds">
+        <small>This page generated using <a href="https://pages.github.com/">GitHub Pages</a><br/>theme by <a href="http://twitter.com/jonrohan/">Jon Rohan</a></small>
+      </div>
+    </footer>
+  </div>
+  <div class="current-section">
+    <a href="#top">Scroll to top</a>
+    <a href="https://github.com/leereilly/octocoder/tarball/master" class="tar">tar</a><a href="https://github.com/leereilly/octocoder/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
+    <p class="name"></p>
+  </div>
+
+  
+</body>
+</html>

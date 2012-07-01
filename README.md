@@ -49,8 +49,8 @@ Set your database environment variable
     
 Run the tests
 
-    rake spec
-    
+    rake
+
 If everything looks OK, launch the application
 
     shotgun    
